@@ -1,0 +1,27 @@
+﻿<Window x:Class="SampleWPFApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:fx="clr-namespace:SampleWPFApp.MotionBlur;assembly=MotionBlur"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SampleWPFApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Border >
+            <Border.Effect>
+                <fx:MotionBlurEffect BlurAngle="{Binding ElementName=blurAngle, Path=Value}" BlurMagnitude="{Binding ElementName=blurMagnitude, Path=Value}" />
+            </Border.Effect>
+            <Image Source="nike-football.jpg" Width="250" />
+        </Border>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,25">
+            <TextBlock Text="Angle" />
+            <Slider x:Name="blurAngle" Minimum="0" Maximum="7" Width="100" />
+            <TextBlock Text="{Binding ElementName=blurAngle, Path=Value,StringFormat=N3}"/>
+            <TextBlock Text="Magnitude" Margin="15,0,0,0" />
+            <Slider x:Name="blurMagnitude" Minimum="0" Maximum="0.01" Width="100" />
+            <TextBlock Text="{Binding ElementName=blurMagnitude, Path=Value,StringFormat=N3}"/>
+        </StackPanel>
+      
+    </Grid>
+</Window>
